@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-03-22T11:19:15+00:00",
+    "exported_at": "2025-03-22T11:22:07+00:00",
     "name": "FoundryVTT",
     "author": "tealk@rollenspiel.monster",
     "uuid": "683461da-15a0-48fd-896e-b57d6e1178f3",
@@ -24,7 +24,7 @@
     "scripts": {
         "installation": {
             "script": "#!\/bin\/bash\n# FoundryVTT install script\n#\n# Server Files: \/mnt\/server\ndeclare -r DIR_ROOT=\"\/mnt\/server\"\ndeclare -r DIR_APP=\"${DIR_ROOT}\/app\"\ndeclare -r DIR_DATA=\"${DIR_ROOT}\/data\"\ndeclare -r ZIP_FILE_NAME=\"foundryvtt.zip\"\n\nmain() {\n  apt update\n  apt install -y unzip\n  apt install -y libnss3\n\n  printf \"\\nBuilding directory structure...\\n\"\n  mkdir -p \"${DIR_DATA}\/Config\"\n  mkdir -p \"${DIR_APP}\"\n  cd \"${DIR_APP}\"\n  printf \"\\nDownloading FoundryVTT files...\\n\"\n  wget -O \"${ZIP_FILE_NAME}\" \"${TIMED_URL}\"\n  printf \"\\nunzipping FoundryVTT files...\\n\"\n  unzip \"${ZIP_FILE_NAME}\" -d \"${DIR_APP}\"\n  #rm \"${ZIP_FILE_NAME}\"\n\n  printf \"\\nGenerating default configuration...\\n\"\n  cat <<EOF >\"${DIR_DATA}\/Config\/options.json\"\n{\n  \"port\": 30000,\n  \"upnp\": false,\n  \"fullscreen\": false,\n  \"hostname\": null,\n  \"localHostname\": null,\n  \"routePrefix\": null,\n  \"sslCert\": null,\n  \"sslKey\": null,\n  \"awsConfig\": null,\n  \"dataPath\": \"\/home\/container\/data\",\n  \"passwordSalt\": null,\n  \"proxySSL\": false,\n  \"proxyPort\": null,\n  \"minifyStaticFiles\": true,\n  \"updateChannel\": \"release\",\n  \"language\": \"en.core\",\n  \"upnpLeaseDuration\": null,\n  \"world\": null\n}\nEOF\n  printf \"Installation Done.\\n\"\n}\nmain \"@\"",
-            "container": "ghcr.io\/parkervcp\/yolks:debian",
+            "container": "ghcr.io\/parkervcp\/installers:debian",
             "entrypoint": "bash"
         }
     },
