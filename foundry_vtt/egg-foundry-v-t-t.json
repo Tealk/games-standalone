@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-03-22T10:58:56+00:00",
+    "exported_at": "2025-03-22T11:19:15+00:00",
     "name": "FoundryVTT",
     "author": "tealk@rollenspiel.monster",
     "uuid": "683461da-15a0-48fd-896e-b57d6e1178f3",
@@ -16,7 +16,7 @@
     "file_denylist": [],
     "startup": " .\/app\/foundryvtt --noupdate --port={{SERVER_PORT}} --dataPath=\"\/home\/container\/data\"",
     "config": {
-        "files": "{\n    \"data\/Config\/options.json\": {\n        \"parser\": \"json\",\n        \"find\": {\n            \"port\": \"{{SERVER_PORT}}\",\n            \"language\": \"{{server.environment.LANGUAGE}}\"\n        }\n    }\n}",
+        "files": "{\n    \"data\/Config\/options.json\": {\n        \"parser\": \"json\",\n        \"find\": {\n            \"port\": \"{{server.allocations.default.port}}\",\n            \"language\": \"{{server.environment.LANGUAGE}}\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \"Server started and listening on port\"\n}",
         "logs": "{}",
         "stop": "^C"
